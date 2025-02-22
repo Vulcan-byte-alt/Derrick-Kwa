@@ -574,6 +574,74 @@
             position: relative !important;
             top: -8px !important;
         }
+
+        /* Terminal Styles */
+        .terminal-window {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            font-family: 'Courier New', monospace;
+        }
+
+        .terminal-header {
+            background: #333;
+            padding: 8px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-close {
+            background: #ff5f56;
+        }
+
+        .terminal-minimize {
+            background: #ffbd2e;
+        }
+
+        .terminal-maximize {
+            background: #27c93f;
+        }
+
+        .terminal-content {
+            padding: 16px;
+            color: #00ff00;
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            border-right: .15em solid #00ff00;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #00ff00;
+            }
+        }
     </style>
 </head>
 
@@ -619,7 +687,7 @@
             <h1
                 class="text-7xl md:text-9xl  font-bold mb-8 tracking-tight hover:scale-105 transition-transform duration-500">
                 <!-- Individual letters with unique IDs -->
-                 <br>
+                <br>
                 <span class="title-char text-3d" id="char1">D</span>
                 <span class="title-char text-3d" id="char2">e</span>
                 <span class="title-char text-3d" id="char3">r</span>
@@ -804,50 +872,18 @@
                     </div>
                 </div>
                 <div class="card rounded-2xl p-8 dynamic-element">
-                    <div class="aspect-square relative bg-gray-900 rounded-lg overflow-hidden culinary-showcase">
-                        <div class="culinary-grid p-4">
-                            <!-- Recipe cards here -->
-                            <div class="recipe-card group">
-                                <img src="blog1.png" alt="Dish 1" class="w-full h-full object-cover rounded-lg" />
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <h4 class="text-lg font-bold mb-2">Innovative Fusion</h4>
-                                        <p class="text-sm text-gray-200">A unique blend of Eastern and Western flavors
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="pepper-container"></div>
-                            </div>
-                            <div class="recipe-card group">
-                                <img src="blog2.png" alt="Dish 2" class="w-full h-full object-cover rounded-lg" />
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <h4 class="text-lg font-bold mb-2">Deconstructed Classic</h4>
-                                        <p class="text-sm text-gray-200">A modern take on a timeless recipe.</p>
-                                    </div>
-                                </div>
-                                <div class="pepper-container"></div>
-                            </div>
-                            <div class="recipe-card group">
-                                <img src="blog3.png" alt="Dish 3" class="w-full h-full object-cover rounded-lg" />
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <h4 class="text-lg font-bold mb-2">Edible Art</h4>
-                                        <p class="text-sm text-gray-200">A dish that looks as good as it tastes.</p>
-                                    </div>
-                                </div>
-                                <div class="pepper-container"></div>
-                            </div>
-                            <div class="recipe-card group">
-                                <img src="client1.jpg" alt="Dish 4" class="w-full h-full object-cover rounded-lg" />
-                                <div class="overlay">
-                                    <div class="overlay-content">
-                                        <h4 class="text-lg font-bold mb-2">Mystery Ingredient</h4>
-                                        <p class="text-sm text-gray-200">Can you guess what the secret ingredient is?
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="pepper-container"></div>
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="terminal-button terminal-close"></div>
+                            <div class="terminal-button terminal-minimize"></div>
+                            <div class="terminal-button terminal-maximize"></div>
+                        </div>
+                        <div class="terminal-content">
+                            <div class="typing-animation">
+                                > Initializing trading algorithm...<br />
+                                > Connecting to markets...<br />> Running strategy backtest...<br />
+                                > Performance analysis complete<br />
+                                > Ready to trade
                             </div>
                         </div>
                     </div>
@@ -1729,24 +1765,24 @@
 
         function createROICalculator() {
             const calculatorHTML = `
-                        <div class="roi-calculator mt-8 space-y-4">
-                            <div class="form-group">
-                                <label class="text-gray-300">Monthly Ad Spend ($)</label>
-                                <input type="range" id="adSpend" min="1000" max="100000" step="1000" 
-                                       class="w-full mt-2 bg-gray-800 rounded-lg">
-                                <output id="adSpendValue" class="text-[#C9A959]">$5,000</output>
+                            <div class="roi-calculator mt-8 space-y-4">
+                                <div class="form-group">
+                                    <label class="text-gray-300">Monthly Ad Spend ($)</label>
+                                    <input type="range" id="adSpend" min="1000" max="100000" step="1000" 
+                                           class="w-full mt-2 bg-gray-800 rounded-lg">
+                                    <output id="adSpendValue" class="text-[#C9A959]">$5,000</output>
+                                </div>
+                                <div class="form-group">
+                                    <label class="text-gray-300">Conversion Rate (%)</label>
+                                    <input type="range" id="conversionRate" min="1" max="20" step="0.5" 
+                                           class="w-full mt-2 bg-gray-800 rounded-lg">
+                                    <output id="conversionValue" class="text-[#C9A959]">3%</output>
+                                </div>
+                                <div class="result text-2xl text-center p-4 bg-gray-900 rounded-lg">
+                                    Estimated Monthly ROI: <span id="roiResult" class="text-[#C9A959]">$15,000</span>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="text-gray-300">Conversion Rate (%)</label>
-                                <input type="range" id="conversionRate" min="1" max="20" step="0.5" 
-                                       class="w-full mt-2 bg-gray-800 rounded-lg">
-                                <output id="conversionValue" class="text-[#C9A959]">3%</output>
-                            </div>
-                            <div class="result text-2xl text-center p-4 bg-gray-900 rounded-lg">
-                                Estimated Monthly ROI: <span id="roiResult" class="text-[#C9A959]">$15,000</span>
-                            </div>
-                        </div>
-                    `;
+                        `;
 
             document.querySelector('#marketing .dynamic-element').insertAdjacentHTML('beforeend', calculatorHTML);
 
@@ -1785,11 +1821,11 @@
                 milestoneDiv.className = 'mb-12 relative timeline-item opacity-0';
 
                 const content = `
-                            <div class="absolute w-4 h-4 bg-[#C9A959] rounded-full -left-[20px] top-2"></div>
-                            <h3 class="text-2xl font-bold">${milestone.year}</h3>
-                            <h4 class="text-xl text-[#C9A959] mb-2">${milestone.event}</h4>
-                            <p class="text-gray-300">${milestone.description}</p>
-                        `;
+                                <div class="absolute w-4 h-4 bg-[#C9A959] rounded-full -left-[20px] top-2"></div>
+                                <h3 class="text-2xl font-bold">${milestone.year}</h3>
+                                <h4 class="text-xl text-[#C9A959] mb-2">${milestone.event}</h4>
+                                <p class="text-gray-300">${milestone.description}</p>
+                            `;
 
                 milestoneDiv.innerHTML = content;
                 timeline.appendChild(milestoneDiv);
@@ -1823,15 +1859,15 @@
 
         function createPhilosophyGenerator() {
             const generatorHTML = `
-                        <div class="philosophy-generator mt-8 p-6 bg-gray-900 rounded-lg text-center">
-                            <h3 class="text-2xl mb-4">Today's Philosophy</h3>
-                            <div id="quoteDisplay" class="text-xl text-[#C9A959] min-h-[100px]"></div>
-                            <button id="newQuote" 
-                                    class="mt-4 px-6 py-2 bg-[#C9A959] text-black rounded hover:bg-[#A67C00] transition-colors">
-                                New Insight
-                            </button>
-                        </div>
-                    `;
+                            <div class="philosophy-generator mt-8 p-6 bg-gray-900 rounded-lg text-center">
+                                <h3 class="text-2xl mb-4">Today's Philosophy</h3>
+                                <div id="quoteDisplay" class="text-xl text-[#C9A959] min-h-[100px]"></div>
+                                <button id="newQuote" 
+                                        class="mt-4 px-6 py-2 bg-[#C9A959] text-black rounded hover:bg-[#A67C00] transition-colors">
+                                    New Insight
+                                </button>
+                            </div>
+                        `;
 
             document.querySelector('#growth .dynamic-element').insertAdjacentHTML('beforeend', generatorHTML);
 
@@ -2062,6 +2098,69 @@
             }
         });
     </script>
+
+
+        <script>
+            // Terminal typing animation in web development section
+            const lines = [
+                '> git init',
+                '> npm install tailwindcss postcss autoprefixer',
+                '> npx tailwindcss init -p',
+                '> npm run dev'
+            ];
+            let currentLineIndex = 0;
+            let currentCharIndex = 0;
+            let terminalContentElement;
+            let animationStarted = false; // Add a flag
+
+            function typeLine() {
+                if (currentLineIndex < lines.length) {
+                    const line = lines[currentLineIndex];
+                    if (!terminalContentElement) {
+                        terminalContentElement = document.createElement('div');
+                        terminalContentElement.className = 'typing-animation';
+                        document.querySelector('.terminal-content').appendChild(terminalContentElement);
+                    }
+
+                    if (currentCharIndex < line.length) {
+                        terminalContentElement.textContent += line[currentCharIndex];
+                        currentCharIndex++;
+                        setTimeout(typeLine, 50); // Adjust typing speed
+                    } else {
+                        // Line complete, prepare for the next one
+                        terminalContentElement = null; // Reset element for next line
+                        currentCharIndex = 0;
+                        currentLineIndex++;
+                        setTimeout(typeLine, 1000); // Delay before typing next line
+                    }
+                }
+            }
+
+
+            function startAnimation() {
+                if (!animationStarted) {
+                    animationStarted = true;
+                    typeLine();
+                }
+            }
+
+            // Intersection Observer to start animation when the development section is in viewport
+            const developmentSection = document.getElementById('development');
+
+            const observer1 = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        startAnimation();
+                        observer1.unobserve(developmentSection); // Stop observing once started
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the section is visible
+            });
+
+            // Start observing the development section
+            observer1.observe(developmentSection);
+        </script>
 </body>
 
 </html>
